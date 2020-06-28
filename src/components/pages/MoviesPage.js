@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MoviesList from '../MoviesList'
 
+import { fetchMovies } from '../../actions/movies.js';
+
  class MoviesPage extends Component {
     static propTypes = {
-        movies: PropTypes.array.isRequired
+        movies: PropTypes.object.isRequired
     };
 
+    componentDidMount() {
+        this.props.fetchMovies();
+    }
+
     render() {
-        console.log(this.props)
         return (
             <div>
                 <h2>MoviesPage</h2>
@@ -25,4 +30,8 @@ const mapStateToProps = ({ movies }) => {
     }
 };
 
-export default connect(mapStateToProps) (MoviesPage);
+const mapDispatchToProps = {
+    fetchMovies
+}
+
+export default connect(mapStateToProps , mapDispatchToProps) (MoviesPage);
