@@ -17,7 +17,7 @@ import { fetchMovies } from '../../actions/movies.js';
     render() {
         return (
             <div>
-                <h2>MoviesPage</h2>
+                <h2>GAMES</h2>
                 <MoviesList movies = { this.props.movies }></MoviesList>
             </div>
         );

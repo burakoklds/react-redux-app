@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route} from 'react-router-dom';
 import MoviesPage from './components/pages/MoviesPage';
+import NewMoviesPage from './components/pages/NewMoviesPage';
 import 'semantic-ui-css/semantic.min.css';
 import {
   Container,
@@ -18,7 +19,9 @@ render() {
         <Header></Header>
 
         <Container text>
-               <Route path="/movies" component={ MoviesPage }></Route>
+               <Route exact path="/"></Route>
+               <Route exact path="/movies" component={ MoviesPage }></Route>
+               <Route exact path="/movies/new" component={ NewMoviesPage }></Route>
 
         </Container>
 

@@ -32,3 +32,12 @@
     transform: rotate(360deg);
   }
 }
+
+.clearFix {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.inlineError{
+    color: red;
+}
