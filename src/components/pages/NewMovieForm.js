@@ -36,7 +36,7 @@ import InlineError from '../InlineError'
        <div>
          <h2>New Movie Form</h2>
          <Form onSubmit={ this.onSubmit }>
-           <Form.Field>
+           <Form.Field error={ !!errors.title }>
              <label>Title</label>
              { errors.title && <InlineError message={ errors.title } />}
              <input 
@@ -46,7 +46,7 @@ import InlineError from '../InlineError'
              onChange={this.handleChange}
              placeholder='Title' />
            </Form.Field>
-           <Form.Field>
+           <Form.Field error={ !!errors.cover }>
              <label>Cover Url</label>
              { errors.cover && <InlineError message={ errors.cover } />}
              <input 
