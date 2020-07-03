@@ -1,13 +1,32 @@
 import React from 'react'
-import { Card, Image, GridColumn } from 'semantic-ui-react'
+import { Card, Image, GridColumn ,Button , Icon } from 'semantic-ui-react'
+
+const extra = (
+  <div className="ui two buttons">
+    <Button animated>
+      <Button.Content visible>Edit</Button.Content>
+      <Button.Content hidden>
+        <Icon name='arrow right' />
+      </Button.Content>
+    </Button>
+    <Button animated='vertical'>
+      <Button.Content hidden>Delete</Button.Content>
+      <Button.Content visible>
+        <Icon name='trash' />
+      </Button.Content>
+    </Button>
+  </div>
+
+);
 
 const MovieCard = ( { movie } ) => (
   <GridColumn>
   <Card>
-    <Image src= { movie.cover } wrapped ui={false} />
-    <Card.Content>
-      <Card.Header> { movie.title } </Card.Header>
-    </Card.Content>
+    <Card 
+      image={movie.cover}
+      header={movie.title}
+      extra={extra}
+    />
   </Card>
   </GridColumn>
 )
