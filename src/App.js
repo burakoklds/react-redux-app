@@ -9,6 +9,7 @@ import {
 } from 'semantic-ui-react'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import HomePage from './components/pages/HomePage';
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ render() {
         <Header></Header>
 
         <Container text>
+               <Route exact path="/" component={ HomePage }></Route>
                <Route exact path="/movies" component={ MoviesPage }></Route>
                <Route exact path="/movies/new" component={ NewMoviesPage }></Route>
                <Route exact path="/movie/:_id" component={ NewMoviesPage }></Route>
