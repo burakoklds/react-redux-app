@@ -1,6 +1,7 @@
 import {
     NEW_MOVİE_FULFILLED, NEW_MOVİE_REJECTED, NEW_MOVİE_PENDING,
-    FETCH_MOVİE_FULFILLED, FETCH_MOVİE_REJECTED, FETCH_MOVİE_PENDING
+    FETCH_MOVİE_FULFILLED, FETCH_MOVİE_REJECTED, FETCH_MOVİE_PENDING,
+    UPDATE_MOVİE_FULFILLED, UPDATE_MOVİE_REJECTED, UPDATE_MOVİE_PENDING
 }
     from '../actions/newMovie';
 
@@ -22,7 +23,7 @@ export default (state = initialState, action) => {
         case NEW_MOVİE_FULFILLED:
             return {
                 ...state,
-                movies: action.payload,
+                //movies: action.payload,
                 fetching: false,
                 done: true
             };
@@ -54,6 +55,24 @@ export default (state = initialState, action) => {
                 movie: {
                     fetching: false
                 }
+            };
+        //UPDATE_MOVİE
+        case UPDATE_MOVİE_PENDING:
+            return {
+                ...state,
+                fetching: true
+            };
+        case UPDATE_MOVİE_FULFILLED:
+            return {
+                ...state,
+                fetching: false,
+                done: true
+            };
+        case UPDATE_MOVİE_REJECTED:
+            return {
+                ...state,
+                error: action.payload,
+                fetching: false
             };
         default:
             return state;
