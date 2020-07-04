@@ -19,7 +19,6 @@ render() {
         <Header></Header>
 
         <Container text>
-               <Route exact path="/"></Route>
                <Route exact path="/movies" component={ MoviesPage }></Route>
                <Route exact path="/movies/new" component={ NewMoviesPage }></Route>
                <Route exact path="/movie/:_id" component={ NewMoviesPage }></Route>
