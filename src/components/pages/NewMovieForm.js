@@ -1,18 +1,32 @@
 import React, { Component } from 'react'
-import { Button, Checkbox, Form, Image, Message } from 'semantic-ui-react'
+import { Button,  Form, Image, Message } from 'semantic-ui-react'
 import InlineError from '../InlineError'
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 class NewMovieForm extends Component {
   state = {
-    title: '',
-    cover: '',
+    title: this.props.movie ? this.props.movie.title : '',
+    cover: this.props.movie ? this.props.movie.cover : '',
     errors: {}
   };
 
   static propTypes = {
     onNewMovieSubmit: PropTypes.func.isRequired
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { movie } = nextProps.newMovie;
+    if(
+      movie.title
+      &&
+      movie.title !== this.state.title
+    ){
+      this.setState({
+        title: movie.title,
+        cover: movie.cover
+      });
+    }
   }
 
   handleChange = (e) => {
@@ -42,7 +56,7 @@ class NewMovieForm extends Component {
   render() {
     const { errors } = this.state;
     const form = (
-      <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching}>
+      <Form onSubmit={this.onSubmit} loading={this.props.newMovie.fetching || this.props.newMovie.movie.fetching}>
         <Form.Field error={!!errors.title}>
           <label>Title</label>
           {errors.title && <InlineError message={errors.title} />}
@@ -62,9 +76,6 @@ class NewMovieForm extends Component {
             value={this.state.cover}
             onChange={this.handleChange}
             placeholder='Cover Url' />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox label='I agree to the Terms and Conditions' />
         </Form.Field>
         <Image src={this.state.cover} size='small' />
         <div className="clearFix"></div>

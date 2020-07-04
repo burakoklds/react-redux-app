@@ -1,9 +1,11 @@
 import React from 'react'
-import { Card, Image, GridColumn ,Button , Icon } from 'semantic-ui-react'
+import { Card, GridColumn ,Button , Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
-const extra = (
+const extra = movie => {
+  return(
   <div className="ui two buttons">
-    <Button animated>
+    <Button animated as={Link} to={`/movie/${movie._id}`}>
       <Button.Content visible>Edit</Button.Content>
       <Button.Content hidden>
         <Icon name='arrow right' />
@@ -17,7 +19,7 @@ const extra = (
     </Button>
   </div>
 
-);
+)};
 
 const MovieCard = ( { movie } ) => (
   <GridColumn>
@@ -25,7 +27,7 @@ const MovieCard = ( { movie } ) => (
     <Card 
       image={movie.cover}
       header={movie.title}
-      extra={extra}
+      extra={extra(movie)}
     />
   </Card>
   </GridColumn>
